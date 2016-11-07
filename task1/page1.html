@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Github users</title>
+	<meta charset="UTF-8> 
+	<link rel="shortcut icon" type="image/x-icon" href="GitHub-Mark.ico" />
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+</head>
+<body ng-app="users"  ng-controller="getUsers">
+	<div class="header">
+		<div class="image">
+			<img src="GitHub-Mark.ico" class="logo">
+			<h2>Github Users</h2>
+		</div>
+	</div>
+	
+	<div id="app1" ng-init="SZ=12"  class="user-list" >
+		<ul>
+			<li ng-repeat="it in Users | limitTo:SZ"  ng-click="changeName(it.id)" ng-class="{active:isActive(it.id)}">
+				<a ui-sref="user({currID:{{it.id}}})">{{it.login}}</a> </li>
+		<a href="" id="loadMore" ng-click="loadMore()" >Load More</a>
+		</ul>
+		
+	</div>
+	
+	<div  class="all">
+		<div  ng-init="currUser1" class="info" ui-view>
+		</div>
+	</div>
+	
+
+	<script src="controller.js"></script> 
+</body>
+</html>
